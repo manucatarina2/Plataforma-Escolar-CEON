@@ -7,7 +7,6 @@ $msg      = '';
 $erro     = '';
 $usuarios = lerDados('usuarios');
 
-// ── POST ──
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $acao = $_POST['acao'] ?? '';
 
@@ -21,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $erro = 'Nome e e-mail são obrigatórios.';
         } else {
             if ($acao === 'criar') {
-                // Verifica e-mail duplicado
                 foreach ($usuarios as $u) {
                     if ($u['email'] === $email) { $erro = 'E-mail já cadastrado.'; break; }
                 }
@@ -55,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($acao === 'excluir') {
         $id = (int)($_POST['id'] ?? 0);
-        // Não permite excluir a si mesmo
         if ($id === (int)$_SESSION['usuario']['id']) {
             $erro = 'Você não pode excluir seu próprio usuário.';
         } else {
@@ -66,7 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// ── GET: editar ──
 $editando = null;
 if (isset($_GET['editar'])) {
     $eid = (int)$_GET['editar'];
@@ -91,7 +87,6 @@ if (isset($_GET['editar'])) {
   <?php if ($msg): ?><div class="alerta alerta-ok"><?= e($msg) ?></div><?php endif; ?>
   <?php if ($erro): ?><div class="alerta alerta-erro"><?= e($erro) ?></div><?php endif; ?>
 
-  <!-- Formulário -->
   <div class="card">
     <h2><?= $editando ? 'Editar Usuário' : 'Novo Usuário' ?></h2>
     <form method="post" id="form-usuario">
@@ -133,7 +128,6 @@ if (isset($_GET['editar'])) {
     </form>
   </div>
 
-  <!-- Tabela de usuários -->
   <div class="card">
     <h2>Usuários Cadastrados (<?= count($usuarios) ?>)</h2>
     <table>

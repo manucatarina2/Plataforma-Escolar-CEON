@@ -1,9 +1,8 @@
 <?php
-// nav.php – cabeçalho + abas de navegação comum a todas as páginas
-// Requer: $paginaAtual definida antes de incluir este arquivo
+
 $u    = $_SESSION['usuario'];
 $tipo = $u['tipo'];
-$b    = '/M%C3%B3duloA/'; // base URL (MóduloA URL-encoded)
+$b    = '/M%C3%B3duloA/'; 
 
 $links = [
     ['url' => $b . 'dashboard.php',        'label' => 'Dashboard',   'id' => 'dashboard',   'acesso' => ['administracao','professor','aluno']],

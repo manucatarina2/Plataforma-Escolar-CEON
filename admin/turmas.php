@@ -7,7 +7,6 @@ $msg    = '';
 $erro   = '';
 $turmas = lerDados('turmas');
 
-// ── POST ──
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $acao = $_POST['acao'] ?? '';
 
@@ -48,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// ── GET: editar ──
 $editando = null;
 if (isset($_GET['editar'])) {
     $eid = (int)$_GET['editar'];
@@ -57,7 +55,6 @@ if (isset($_GET['editar'])) {
     }
 }
 
-// Conta alunos por turma
 $usuarios = lerDados('usuarios');
 $alunosPorTurma = [];
 foreach ($usuarios as $u) {
@@ -82,7 +79,6 @@ foreach ($usuarios as $u) {
   <?php if ($msg): ?><div class="alerta alerta-ok"><?= e($msg) ?></div><?php endif; ?>
   <?php if ($erro): ?><div class="alerta alerta-erro"><?= e($erro) ?></div><?php endif; ?>
 
-  <!-- Formulário -->
   <div class="card">
     <h2><?= $editando ? 'Editar Turma' : 'Nova Turma' ?></h2>
     <form method="post" id="form-turma">
@@ -110,7 +106,6 @@ foreach ($usuarios as $u) {
     </form>
   </div>
 
-  <!-- Tabela de turmas -->
   <div class="card">
     <h2>Turmas Cadastradas (<?= count($turmas) ?>)</h2>
     <?php if (empty($turmas)): ?>

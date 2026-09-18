@@ -1,8 +1,8 @@
 ﻿<?php
-// Conexao com o banco de dados MySQL - CEON
+
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');          // padrao XAMPP: sem senha
+define('DB_PASS', '');          
 define('DB_NAME', 'ceon');
 define('DB_CHARSET', 'utf8mb4');
 
